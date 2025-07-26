@@ -69,11 +69,28 @@ section#home{
     background: #2696E9;
 }
 
+.home::before{
+  z-index: 777;
+  content: '';
+  position: absolute;
+  background: rgba(3, 96, 251, 0.3);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 .home .content{
     z-index: 888;
     color: #fff;
     width: 70%;
     margin-top: 50px;
+    margin-left: 100px;
+    display: none;
+}
+
+.home .content.active{
+  display: block;
 }
 
 .home .content h1{
@@ -141,6 +158,61 @@ section#home{
 
 .menu-btn{
     display: none;
+}
+
+.home img{
+  z-index: 000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-navigation{
+  z-index: 888;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(80px);
+  margin-bottom: 12px;
+}
+
+.slider-navigation .nav-btn{
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  transition: 0.3s ease;
+}
+
+.slider-navigation .nav-btn.active{
+  background-color: #e70c0c;
+  transform: scale(1.2);
+}
+
+.slider-navigation .nav-btn:not(:last-child){
+  margin-right: 10px;
+}
+
+.slider-navigation .nav-btn:hover{
+  transform: scale(1.2);
+}
+
+.img-bg{
+  position: absolute;
+  width: 100%;
+  clip-path: circle(0% at 0 50%);
+}
+
+.img-bg.active{
+  clip-path: circle(150% at 0 50%);
+  transition: 2s ease;
+  transition-property: clip-path;
 }
 
 @media (max-width: 1040px) {
@@ -406,9 +478,9 @@ section.col .right{
 }
 
 @media screen and (max-width: 768px) {
-  /* .maps{
-    display: none;
-  } */
+  .home .content{
+    margin-left: 0;
+  }
 }
 
 @media screen and (min-width: 768px) {
